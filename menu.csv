@@ -1,0 +1,21 @@
+category_order,category_id,category_label,category_badge,item_order,item_name,description,price
+1,paninis,Paninis,Free chips with panini purchase,1,Philly w/ Attitude,"Steak, onions, peppers, cherry peppers, mushrooms, cheese",$17
+1,paninis,Paninis,Free chips with panini purchase,2,Chicken Bacon Ranch,"Chicken, bacon, ranch, cheese",$16
+1,paninis,Paninis,Free chips with panini purchase,3,Buff n' Tuff,"Chicken, buffalo sauce, bacon, cheese",$16
+1,paninis,Paninis,Free chips with panini purchase,4,Big Mac,"Beef, cheese, Big Mac sauce, lettuce, onions",$17
+2,breakfast,Breakfast,Served until 11 AM,1,Phat Betch,"French toast, egg, cheese, sausage or bacon, syrup, powdered sugar, hashbrown",$14
+2,breakfast,Breakfast,Served until 11 AM,2,Get It Girl,"Egg, cheese, avocado",$10
+2,breakfast,Breakfast,Served until 11 AM,3,Basic Betch,"Egg, cheese, sausage or bacon",$8
+2,breakfast,Breakfast,Served until 11 AM,4,Philly w/ Morning Attitude,"Steak, egg, cheese, mushroom, roasted peppers, hot peppers, onion, hashbrown",$15
+2,breakfast,Breakfast,Served until 11 AM,5,Hashbrowns,Crispy breakfast side,$1.50
+3,appetizers,Appetizers,Finger foods and sides,1,Fries,"Hot, crispy fries",$9
+3,appetizers,Appetizers,Finger foods and sides,2,Loaded Fries,Fries loaded Logi Bears style,$12
+3,appetizers,Appetizers,Finger foods and sides,3,Mozzarella Sticks (6),Six golden mozzarella sticks,$9
+3,appetizers,Appetizers,Finger foods and sides,4,Cheese Quesadilla,Melty cheese quesadilla,$8
+3,appetizers,Appetizers,Finger foods and sides,5,Chicken & Cheese Quesadilla,Chicken and cheese folded hot,$9
+3,appetizers,Appetizers,Finger foods and sides,6,Rice Balls (3),Three crispy rice balls,$5
+3,appetizers,Appetizers,Finger foods and sides,7,Chicken Tenders & Fries,Chicken tenders with fries,$15
+3,appetizers,Appetizers,Finger foods and sides,8,Hot Dog & Fries,Classic hot dog with fries,$5
+4,beverages,Beverages,Cold drinks,1,Water,Bottled water,$1
+4,beverages,Beverages,Cold drinks,2,Lemonade,Cold lemonade,$2.25
+4,beverages,Beverages,Cold drinks,3,Soda,Assorted soda,$2.25
