@@ -15,8 +15,9 @@ This is a static website built with:
 - JavaScript
 - Bootstrap from a CDN
 - CSV files for editable content
+- Web3Forms for the catering contact form
 
-There is no backend application or database.
+There is no custom backend application or database.
 
 ## Main Files
 
@@ -30,6 +31,24 @@ There is no backend application or database.
 - `robots.txt` - crawler instructions
 - `sitemap.xml` - sitemap for search engines
 - `CONTENT_UPDATE_INSTRUCTIONS.md` - non-technical instructions for updating CSV content through GitHub
+
+## Contact Form
+
+The catering request form submits through Web3Forms.
+
+The Web3Forms access key is stored in `index.html` as a hidden `access_key` field. If the key ever needs to be changed, replace the value in this line:
+
+```html
+<input type="hidden" name="access_key" value="...">
+```
+
+The form posts to:
+
+```text
+https://api.web3forms.com/submit
+```
+
+The form also includes hCaptcha spam protection using Web3Forms' free-plan hCaptcha site key. In the Web3Forms dashboard, make sure hCaptcha is enabled for this form so submissions are checked server-side as well as in the browser.
 
 ## Content Updates
 

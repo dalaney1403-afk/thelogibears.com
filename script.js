@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadMenu();
   loadFoodSlideshow();
   loadSchedule();
+  setupFormToggles();
+  setupWeb3Forms();
   setupNavToggle();
   closeMobileNavOnClick();
 });
@@ -426,6 +428,153 @@ function setupFoodSlideshow(slideshow) {
   slideshow.addEventListener("focusin", stopAutoplay);
   slideshow.addEventListener("focusout", startAutoplay);
   startAutoplay();
+}
+
+function setupFormToggles() {
+  const toggles = document.querySelectorAll("[data-form-toggle]");
+
+  toggles.forEach((toggle) => {
+    const formId = toggle.getAttribute("data-form-toggle");
+    const form = formId ? document.getElementById(formId) : null;
+
+    if (!form) {
+      return;
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpening = form.hasAttribute("hidden");
+
+      form.toggleAttribute("hidden", !isOpening);
+      toggle.setAttribute("aria-expanded", String(isOpening));
+
+      if (isOpening) {
+        const firstField = form.querySelector("input:not([type='hidden']):not(.botcheck), select, textarea");
+
+        requestAnimationFrame(() => {
+          renderHCaptcha(form);
+          form.scrollIntoView({ behavior: "smooth", block: "start" });
+          firstField?.focus({ preventScroll: true });
+        });
+      }
+    });
+  });
+}
+
+function setupWeb3Forms() {
+  const forms = document.querySelectorAll("[data-web3forms-form]");
+
+  forms.forEach((form) => {
+    const status = form.querySelector(".form-status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const accessKey = form.querySelector("input[name='access_key']")?.value.trim();
+
+      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        setFormStatus(status, "Add your Web3Forms access key before using this form.", "error");
+        return;
+      }
+
+      const captcha = form.querySelector(".h-captcha");
+      const captchaResponse = captcha ? getHCaptchaResponse(captcha) : "";
+
+      if (captcha && !captchaResponse) {
+        setFormStatus(status, "Please complete the hCaptcha check before sending.", "error");
+        return;
+      }
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const formData = new FormData(form);
+
+      setFormStatus(status, "Sending your request...", "");
+      submitButton?.setAttribute("disabled", "");
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || result.success === false) {
+          throw new Error(result.message || "The form could not be sent.");
+        }
+
+        form.reset();
+        resetHCaptcha(form);
+        setFormStatus(status, "Thanks! Your catering request has been sent.", "success");
+      } catch (error) {
+        setFormStatus(
+          status,
+          "Sorry, the form could not be sent. Please try again or message Logi Bears on Facebook.",
+          "error",
+        );
+      } finally {
+        submitButton?.removeAttribute("disabled");
+      }
+    });
+  });
+}
+
+function resetHCaptcha(form) {
+  const captcha = form.querySelector(".h-captcha");
+
+  if (!window.hcaptcha || !captcha) {
+    return;
+  }
+
+  try {
+    const widgetId = captcha.dataset.widgetId;
+    window.hcaptcha.reset(widgetId ? Number(widgetId) : undefined);
+  } catch (error) {
+    // hCaptcha may not expose a reset handle if it has not finished loading.
+  }
+}
+
+function renderHCaptcha(form) {
+  const captcha = form.querySelector(".h-captcha");
+
+  if (!captcha || captcha.dataset.widgetId) {
+    return;
+  }
+
+  if (!window.hcaptcha) {
+    window.setTimeout(() => renderHCaptcha(form), 250);
+    return;
+  }
+
+  try {
+    const widgetId = window.hcaptcha.render(captcha, {
+      sitekey: captcha.dataset.sitekey,
+    });
+    captcha.dataset.widgetId = String(widgetId);
+  } catch (error) {
+    // If hCaptcha is already rendered by the browser, leave it alone.
+  }
+}
+
+function getHCaptchaResponse(captcha) {
+  const widgetId = captcha.dataset.widgetId;
+
+  if (window.hcaptcha && widgetId) {
+    return window.hcaptcha.getResponse(Number(widgetId));
+  }
+
+  return captcha.closest("form")?.querySelector("textarea[name='h-captcha-response']")?.value.trim() || "";
+}
+
+function setFormStatus(status, message, state) {
+  if (!status) {
+    return;
+  }
+
+  status.textContent = message;
+  status.classList.toggle("success", state === "success");
+  status.classList.toggle("error", state === "error");
 }
 
 async function loadSchedule() {

@@ -38,7 +38,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
-    <link rel="stylesheet" href="styles.css?v=20260505-2">
+    <link rel="stylesheet" href="styles.css?v=20260506-5">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -253,20 +253,106 @@
                 your crowd, timing, and event setup.
               </p>
               <div class="catering-actions">
-                <a
+                <button
                   class="btn btn-brand btn-lg"
-                  href="https://www.facebook.com/people/Logi-Bears/61573327858813/"
-                  target="_blank"
-                  rel="noopener"
+                  type="button"
+                  data-form-toggle="cateringContactForm"
+                  aria-controls="cateringContactForm"
+                  aria-expanded="false"
                 >
                   <i class="bi bi-chat-heart-fill" aria-hidden="true"></i>
-                  Ask About Catering
-                </a>
+                  Send a Catering Request
+                </button>
                 <a class="btn btn-outline-dark btn-lg" href="#schedule">
                   <i class="bi bi-calendar2-week-fill" aria-hidden="true"></i>
                   See Upcoming Stops
                 </a>
               </div>
+              <form
+                class="contact-form"
+                id="cateringContactForm"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+                data-web3forms-form
+                hidden
+              >
+                <input type="hidden" name="access_key" value="e11728ef-7088-415a-a468-28ef64cc2798">
+                <input type="hidden" name="subject" value="New catering request from Logi Bears website">
+                <input type="hidden" name="from_name" value="Logi Bears Website">
+                <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+                <div class="form-field">
+                  <label for="contactName">Name</label>
+                  <input id="contactName" type="text" name="name" autocomplete="name" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="contactEmail">Email</label>
+                  <input id="contactEmail" type="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="contactPhone">Phone</label>
+                  <input id="contactPhone" type="tel" name="phone" autocomplete="tel">
+                </div>
+
+                <div class="form-field">
+                  <label for="eventDate">Event Date</label>
+                  <input id="eventDate" type="date" name="event_date">
+                </div>
+
+                <div class="form-field">
+                  <label for="eventType">Event Type</label>
+                  <select id="eventType" name="event_type">
+                    <option value="">Select one</option>
+                    <option>Private party</option>
+                    <option>Corporate event</option>
+                    <option>School event</option>
+                    <option>Festival or public event</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="guestCount">Estimated Guests</label>
+                  <input id="guestCount" type="number" name="guest_count" min="1" inputmode="numeric">
+                </div>
+
+                <div class="form-field form-field-full">
+                  <label for="eventLocation">Event Location</label>
+                  <input id="eventLocation" type="text" name="event_location" autocomplete="street-address">
+                </div>
+
+                <div class="form-field form-field-full">
+                  <label for="contactMessage">Message</label>
+                  <textarea
+                    id="contactMessage"
+                    name="message"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="captcha-field">
+                  <div
+                    class="h-captcha"
+                    data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    data-captcha="true"
+                  ></div>
+                </div>
+
+                <div class="form-footer">
+                  <button class="btn btn-brand btn-lg" type="submit">
+                    <i class="bi bi-send-fill" aria-hidden="true"></i>
+                    Send Catering Request
+                  </button>
+                  <a class="btn btn-outline-dark btn-lg" href="#schedule">
+                    <i class="bi bi-calendar2-week-fill" aria-hidden="true"></i>
+                    See Upcoming Stops
+                  </a>
+                </div>
+                <p class="form-status" id="cateringFormStatus" role="status" aria-live="polite"></p>
+              </form>
             </div>
           </div>
         </div>
@@ -386,6 +472,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js?v=20260506-1"></script>
+    <script src="https://js.hcaptcha.com/1/api.js?render=explicit" async defer></script>
+    <script src="script.js?v=20260506-5"></script>
   </body>
 </html>
