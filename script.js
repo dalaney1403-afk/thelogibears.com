@@ -487,6 +487,10 @@ function setupWeb3Forms() {
       const submitButton = form.querySelector("button[type='submit']");
       const formData = new FormData(form);
 
+      if (captchaResponse) {
+        formData.set("h-captcha-response", captchaResponse);
+      }
+
       setFormStatus(status, "Sending your request...", "");
       submitButton?.setAttribute("disabled", "");
 
@@ -508,9 +512,10 @@ function setupWeb3Forms() {
         resetHCaptcha(form);
         setFormStatus(status, "Thanks! Your catering request has been sent.", "success");
       } catch (error) {
+        const message = error instanceof Error && error.message ? error.message : "The form could not be sent.";
         setFormStatus(
           status,
-          "Sorry, the form could not be sent. Please try again or message Logi Bears on Facebook.",
+          `Sorry, the form could not be sent. ${message}`,
           "error",
         );
       } finally {
@@ -542,8 +547,14 @@ function renderHCaptcha(form) {
     return;
   }
 
-  if (!window.hcaptcha) {
-    window.setTimeout(() => renderHCaptcha(form), 250);
+  if (!window.hcaptcha || !window.logiBearsCaptchaReady) {
+    window.addEventListener(
+      "logi-bears-hcaptcha-ready",
+      () => {
+        renderHCaptcha(form);
+      },
+      { once: true },
+    );
     return;
   }
 
