@@ -1,6 +1,6 @@
 # Logi Bears Food Truck Website
 
-Public website for Logi Bears, a family owned food truck based in Syracuse, NY. The site highlights the food truck story, menu, food photos, upcoming schedule, catering, and social media.
+Public website for Logi Bears, a family owned food truck based in Syracuse, NY. The site highlights the food truck story, menu, food photos, upcoming schedule, catering, and social media. Invoices will not be itemized and there is a travel fee for anything over 15 miles. 
 
 Live site:
 
