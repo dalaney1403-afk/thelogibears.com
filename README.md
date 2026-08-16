@@ -34,7 +34,7 @@ There is no custom backend application or database.
 
 ## Contact Form
 
-The catering request form submits through Web3Forms.Invoices will not be itemized and there is a travel fee for anything over 15 miles.
+The catering request form submits through Web3Forms.
 
 The Web3Forms access key is stored in `index.html` as a hidden `access_key` field. If the key ever needs to be changed, replace the value in this line:
 
