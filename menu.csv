@@ -19,4 +19,4 @@ category_order,category_id,category_label,category_badge,item_order,item_name,de
 4,beverages,Beverages,Cold drinks,1,Water,Bottled water,$1
 4,beverages,Beverages,Cold drinks,2,Lemonade,Fresh Cold lemonade,$3.00
 4,beverages,Beverages,Cold drinks,3,Soda,Assorted soda,$2.25
-Invoices will not be itemized. Travel fee after 15 miles. 
+4,Invoices will not be itemized, Travel fee after 15 miles. 
