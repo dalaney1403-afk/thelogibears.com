@@ -1,6 +1,6 @@
 # Logi Bears Food Truck Website
 
-Public website for Logi Bears, a family owned food truck based in Syracuse, NY. The site highlights the food truck story, menu, food photos, upcoming schedule, catering, and social media. Invoices will not be itemized and there is a travel fee for anything over 15 miles. 
+Public website for Logi Bears, a family owned food truck based in Syracuse, NY. The site highlights the food truck story, menu, food photos, upcoming schedule, catering, and social media. 
 
 Live site:
 
@@ -34,7 +34,7 @@ There is no custom backend application or database.
 
 ## Contact Form
 
-The catering request form submits through Web3Forms.
+The catering request form submits through Web3Forms.Invoices will not be itemized and there is a travel fee for anything over 15 miles.
 
 The Web3Forms access key is stored in `index.html` as a hidden `access_key` field. If the key ever needs to be changed, replace the value in this line:
 
