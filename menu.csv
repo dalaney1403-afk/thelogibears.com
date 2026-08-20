@@ -13,10 +13,9 @@ category_order,category_id,category_label,category_badge,item_order,item_name,de
 3,appetizers,Appetizers,Finger foods and sides,3,Mozzarella Sticks (6),Six golden mozzarella sticks,$9
 3,appetizers,Appetizers,Finger foods and sides,4,Cheese Quesadilla,Melty cheese quesadilla,$10
 3,appetizers,Appetizers,Finger foods and sides,5,Chicken & Cheese Quesadilla,Chicken and cheese folded hot,$15
-3,appetizers,Appetizers,Finger foods and sides,6,Rice Balls (3),Three crispy rice balls,$5
+3,appetizers,Appetizers,Finger foods and sides,6,Rice Balls (3),Three crispy rice balls,$8
 3,appetizers,Appetizers,Finger foods and sides,7,Chicken Tenders & Fries,Chicken tenders with fries,$15
-3,appetizers,Appetizers,Finger foods and sides,8,Hot Dog & Fries,Classic hot dog with fries,$5
+3,appetizers,Appetizers,Finger foods and sides,8,Hot Dog & Fries,Classic hot dog with fries,$7
 4,beverages,Beverages,Cold drinks,1,Water,Bottled water,$1
-4,beverages,Beverages,Cold drinks,2,Lemonade,Fresh Cold lemonade,$3.00
-4,beverages,Beverages,Cold drinks,3,Soda,Assorted soda,$2.25
+4,beverages,Beverages,Cold drinks,3,Soda,Assorted soda,$2
  
